@@ -90,9 +90,14 @@ class DoublyLinkedList:
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node."""
     def remove_from_tail(self):
+            # check to see if the value is the only thing in the list
             if self.tail:
                 if self.tail.prev is None:
-                    self.head = None
+                    self.head = None     
+
+                # store the tail value in a variable
+                # set the tail to where the previous pointer is pointing to slide it over
+                # the return the value you removed the tail tag from
                 current_tail = self.tail.value
                 self.tail = self.tail.prev
                 self.length -= 1
@@ -103,21 +108,67 @@ class DoublyLinkedList:
     """Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List."""
     def move_to_front(self, node):
-        pass
+            current_node = node
+            node.delete()
+            self.length -= 1
+            self.add_to_head(current_node.value)
+
+        
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new tail node of the List."""
-    # def move_to_end(self, node):
-    #     pass
+    def move_to_end(self, node):
+            current_node = node
+            if current_node.prev is None:
+                self.head = current_node.next
+        
+            node.delete()
+            self.length -= 1
+            self.add_to_tail(current_node.value)
+        
+        
 
     """Removes a node from the list and handles cases where
     the node was the head or the tail"""
-    # def delete(self, node):
-    #     pass
+    def delete(self, node):
+            current_node = node
+            if node.prev is None and node.next is None:
+                    self.head = None
+                    self.tail = None
+                    self.length -= 1
+                    return node.value
+
+            elif node.prev is None:
+                    self.head = node.next
+                    node.delete()
+                    node.delete()
+                    self.length -= 1
+                    return node.value
+            
+            elif node.next is None:
+                    self.tail = node.prev
+                    node.delete()
+                    self.length -= 1 
+                    return node.value
+            
+            else:
+                   node.delete()
+                   self.length -= 1
+                   return node.value
+        
         
     """Returns the highest value currently in the list"""
-    # def get_max(self):
-    #     pass
+    def get_max(self):
+            current = self.head
+            max_num = current.value
+            while current.next is not None:
+                    if max_num < current.next.value:
+                            max_num = current.next.value
+                    current = current.next
+
+            return max_num
+
+        
 
 
 # my_list = DoublyLinkedList()
