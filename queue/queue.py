@@ -38,7 +38,15 @@ class Queue:
 
     def enqueue(self, value):
            self.size += 1
-           return LinkedList.add_to_end(value)
+           return self.storage.add_to_end(value)
+
+    def dequeue(self):
+           if self.size > 0:
+               self.size -= 1
+           return self.storage.remove_from_head()
+
+    def __len__(self):
+           return self.size
 
 
         
@@ -60,6 +68,7 @@ class Node:
     def set_next(self, new_next):
         # set this node's "next_node" reference to the passed in node
         self.next_node = new_next
+
 
 
 
@@ -85,6 +94,7 @@ class LinkedList:
             self.head = self.head.get_next() 
             return value # this is the removed head
             # don't need to delete because the python cleaner will remove it as it's no longer a part of the linked list
+
 
         
 
