@@ -16,6 +16,7 @@ return elements in Last In First Out order.
 # control the order that the data can be accessed in
 
 # LIFO: think vertical, Last In Stack First Out of Stack
+# I add and remove from the same spot
 # class Stack:
 #     def __init__(self):
 #         self.size = 0
@@ -32,7 +33,7 @@ return elements in Last In First Out order.
 #     def pop(self):
 #         if len(self.storage) < 1:
 #             return None
-#     #     return self.storage.pop() # specify the index or default to the last item in the list
+#     #     return self.storage.pop(0) # specify the index or default to the last item in the list
 
 
 # Linked-List Method
@@ -57,26 +58,26 @@ class Stack:
 
 
 
-class Node:
+class Node: # points to the next nod
     def __init__(self, value=None, next_node=None):
      # the value at this linked list node
         self.value = value
      # reference to the next node in the list
         self.next_node = next_node
 
-    def get_value(self):
+    def get_value(self): # a method that returns the value of the node
         return self.value
 
-    def get_next(self):
+    def get_next(self): # a method that returns the next node in the list
         return self.next_node
 
-    def set_next(self, new_next):
+    def set_next(self, new_next): # a method that sets the next_node to a different node
         # set this node's "next_node" reference to the passed in node
         self.next_node = new_next
 
 class LinkedList:
     def __init__(self):
-        # first node in the list
+        # first node in the list; This is the head of the list
         self.head = None 
 
 
