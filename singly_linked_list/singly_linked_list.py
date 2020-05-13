@@ -19,6 +19,7 @@ class LinkedList:
     def __init__(self):
         # first node in the list
         self.head = None 
+        self.tail = None
 
 
     def add(self, value):
@@ -40,26 +41,52 @@ class LinkedList:
             # we're at the end of the linked list
             current.set_next(new_node)
 
-    def remove_from_head(self):
+    def remove_head(self):
         # what if the list is empty?
-        if not self.head:
+        if not self.head and not self.tail:
             return None
         # what if it isn't empty?
-        else:
-            # we want to return the value at the current head
-            # this stores the value of the head in a variable
-            value = self.head.get_value()
+        elif self.head:
+            current_head = self.head
+            self.head.get_next()
+            return current_head.get_value()
             # need to remove the value at the head
             # need to update the value at self.head; head needs to refer to something
             # self.head.get_next(): moves the Head pointer to the second node in the chain. 
             # The head is how we access the Node at position  0 or 1, we then cut that off. 
             # storing it in the value and then returning the value allows us 
-            self.head = self.head.get_next()
-            return value
 
     def add_to_head(self, value):
         node = Node(value)
         node.next_node = self.head
         self.head = node
 
-    
+    def add_to_tail(self, value):
+        node = Node(value)
+        # if the list is empty
+        if not self.head and not self.tail:
+                self.head = node
+                self.tail = node
+                
+        # if the list isn't empty
+        else:
+               self.tail.set_next(node)
+               self.tail = node
+
+    def contains(self, node):
+        if not self.head:
+            return False
+        
+        current = self.head
+
+        while current:
+            if current.get_value() == node:
+                # current.set_value()
+                return True
+            else:
+                current = current.get_next()
+
+        return False
+
+    def get_max(self):
+        pass

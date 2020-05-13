@@ -5,11 +5,11 @@ at searching for a particular piece of data in the tree.
 
 This part of the project comprises two days:
 1. Implement the methods `insert`, `contains`, `get_max`, and `for_each`
-   on the BSTNode class.
+   on the BinarySearchTree class.
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
-   on the BSTNode class.
+   on the BinarySearchTree class.
 """
-class BSTNode:
+class BinarySearchTree:
     def __init__(self, value):
         self.value = value
         self.left = None
@@ -22,7 +22,26 @@ class BSTNode:
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        # when we start searching, self will be the root
+        # compare the target against self
+        # with recursion you need a stopping point. In this case it's when we found the target
+        #
+        #
+        # Criteria for returning False: we know we need to go in one direction but there's nothing in that direction
+        #
+        if target == self.value:
+            return True
+        if target < self.value:
+            # go left
+            if self.left:
+                return self.left.contains(target)
+        if target > self.value:
+            if self.right:
+                return self.right.contains(target)
+        
+        else:
+            return False
+
 
     # Return the maximum value found in the tree
     def get_max(self):
