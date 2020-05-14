@@ -25,6 +25,7 @@ class QueueTests(unittest.TestCase):
 
     def test_empty_pop(self):
         self.assertIsNone(self.stack.pop())
+        print("I'm len", self.stack.size)
         self.assertEqual(len(self.stack), 0)
 
     def test_pop_respects_order(self):
