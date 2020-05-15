@@ -162,6 +162,7 @@ class BinarySearchTree:
            
             if node.left:
                 queue.append(node.left)
+                
             if node.right:
                 queue.append(node.right)
 
