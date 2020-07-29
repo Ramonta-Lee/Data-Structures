@@ -31,7 +31,7 @@ class BinarySearchTree:
                 self.left = node
             else:
                 # we can't park here
-                # keep searching
+                # keep searching till the end
                 self.left.insert(value)
         else: 
             # go right
