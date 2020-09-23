@@ -58,6 +58,7 @@ class BinarySearchTree:
                 return False
             return self.left.contains(target)
         else:
+            # go right
             if not self.right:
                 return False
             return self.right.contains(target)

@@ -146,10 +146,7 @@ class DoublyLinkedList:
                    node.delete()
                    self.length -= 1
                    return node.value
-               
-
-
-
+    
             current_node = node
             # if this is the only node in the list
             # if node.prev is None and node.next is None:
